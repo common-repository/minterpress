@@ -1,0 +1,7 @@
+<form class="tzmp-col-span-2" data-minterpress-module="nft-url" data-nft-url-id="{{ nft.id }}">
+    {% include 'partials/form-label.twig' with {
+        text: 'Url',
+        for: 'mintUrl'
+    }%}
+    <input class="tzmp-block tzmp-w-full" id="mintUrl" name="mintUrl" type="text" {% if nft.mintUrl %} value="{{ nft.mintUrl }}" {% else %} value="" {% endif %}/>
+</form>

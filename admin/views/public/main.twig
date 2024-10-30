@@ -1,0 +1,15 @@
+{% import 'macros.twig' as macros %}
+
+<ul class="tzmp-list-none tzmp-grid tzmp-grid-cols-3 tzmp-gap-5">
+    {% for nft in nfts_in_gallery %}
+        <li class="tzmp-list-none tzmp-ml-0 tzmp-flex tzmp-flex-col tzmp-justify-between">
+            {# Display WP stored image for performance, but default to IPFS gateway image. #}
+            {% include "partials/nft-card.twig" with {
+                imgSrc: nft.wpImageUrl|default(macros.gateway(nft.imageHash)),
+                nftTitle: nft.name,
+                nftUrl: nft.mintUrl
+            } %}
+
+        </li>
+    {% endfor %}
+</ul>

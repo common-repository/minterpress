@@ -1,0 +1,34 @@
+{% set categories = function('get_terms', {
+       'taxonomy': 'minterpress_category',
+       'hide_empty': false,
+    } )
+%}
+
+<div class="{{ wrapper_classes }} tzmp-grid tzmp-gap-8">
+    <div>
+        {% include 'partials/form-label.twig' with {
+            text: label,
+            for: 'minterpress_category'
+        }%}
+        <select name="minterpress_category" data-category="select">
+            <option value="" disabled {% if not current_category %} selected {% endif %}>
+                -none-
+            </option>
+            {% for category in categories %}
+                <option value={{ category.term_id }} {% if current_category == category.name %} selected {% endif %}>
+                    {{ category.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div data-minterpress-module="dialog" class="tzmp-mt-auto">
+            <button type="button" data-dialog="trigger" class="tzmp-text-mp-blue-primary hover:tzmp-underline">
+                Edit categories
+            </button>
+            {% include 'partials/edit-taxonomy.twig' with {
+                plural_label: 'Categories',
+                singular_label: 'Category',
+                taxonomy: 'minterpress_category',
+            }%}
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="wrap" data-minterpress-module="app">
+
+    <div class="hidden" id="minterpress-app-body">
+        {% include 'partials/notices.twig' %}
+        {% include 'partials/navigation.twig' %}
+
+        {% block body %}
+        {% endblock %}
+    </div>
+
+    {% include 'pages/welcome.twig' %}
+</div>

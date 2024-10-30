@@ -1,0 +1,41 @@
+{%- macro svg(file, customClasses) -%}
+  {% set customClasses = customClasses ?? null %}
+  <span class="{{customClasses}}" aria-hidden="true">
+    {{ include('images/icons/' ~ file ~ '.svg', {
+      customClasses: customClasses
+    }, ignore_missing = true ) }}
+  </span>
+{%- endmacro -%}
+
+{%- macro default(strings, key) -%}
+  {% if strings[key] %}
+    {{ strings[key] }}
+  {% else %}
+    {{ key }}*
+  {% endif %}
+{%- endmacro -%}
+
+{%- macro gateway(imageHash) -%}
+  {% if imageHash %}
+    https://gateway.pinata.cloud/ipfs/{{ imageHash }}
+    {% else %}
+  {% endif %}ß
+{%- endmacro -%}
+
+{% macro truncateHash(string, tag, extraClasses) %}
+  {% if string|length > 20 %}
+      <{{ tag }} data-fulltext={{ string }} data-minterpress-module="reveal-string" class="tzmp-z-10 tzmp-cursor-pointer tzmp-w-full tzmp-group">
+        <span class="{{ extraClasses }} tzmp-w-full">
+          {{ string|slice(0, 10) ~ '...' ~ string|slice(string|length - 10, string|length) }} 
+        </span>
+      </{{ tag }}>
+  {% else %}
+    <{{ tag }}>{{ string }}</{{ tag }}>
+  {% endif %}
+{% endmacro %}
+
+{%- macro fullWidthIframe(src) -%}
+<div class="tzmp-flex tzmp-w-full tzmp-h-full">
+  <iframe src="{{ src }}" class="tzmp-flex-grow" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+</div>
+{%- endmacro -%}

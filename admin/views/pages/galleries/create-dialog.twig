@@ -1,0 +1,31 @@
+{% extends 'layouts/dialog.twig' %}
+
+{% block dialogContent %}
+<div class="tzmp-px-12 tzmp-pb-6">
+    {% include 'partials/h2.twig' with {
+        text: 'Create Gallery',
+    } only %}
+    <form method="POST" action="#" data-minterpress-module="gallery-create">
+        <div class="tzmp-mb-4">
+            {% include 'partials/form-label.twig' with {
+                text: 'Add a name for this gallery',
+                for: 'title'
+            }%}
+            <input class="tzmp-block tzmp-w-full" id="title" name="title" type="text" />
+        </div>
+        <div class="hidden">
+            {% include 'partials/form-label.twig' with {
+                text: 'tz address',
+                for: 'tz_address'
+            }%}
+            <input id="tz_address" name="tz_address" type="text" value="{{ tz_address }}"/>
+        </div>
+        <div class="tzmp-text-right">
+            <span class="tzmp-mr-3">
+                <button class="button-secondary" type="button"  data-dialog="trigger">Cancel</button>
+            </span>
+            <button class="button-primary" method="dialog" type="submit" data-dialog="trigger">Create Gallery</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

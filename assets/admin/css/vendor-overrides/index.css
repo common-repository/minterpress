@@ -1,0 +1,55 @@
+/*
+ * tags-input overrides
+ */
+
+.tags-input {
+  @apply tzmp-border;
+  @apply tzmp-border-wp-gray-outline;
+  @apply tzmp-px-1;
+  display: inline-block;
+  background: #fff;
+  width: 100%;
+  border-radius: 4px;
+
+  & .tag {
+	display: inline-block;
+	background: #eee;
+	color: #444;
+	padding: 0 4px;
+	margin: 2px;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	font: inherit;
+	user-select: none;
+	cursor: pointer;
+	transition: all 100ms ease;
+
+	&.selected {
+	  background-color: #777;
+	  border-color: #777;
+	  color: #eee;
+	}
+
+	&.dupe {
+	  transform: scale3d(1.2, 1.2, 1.2);
+	  background-color: #fcc;
+	  border-color: #700;
+	}
+  }
+
+  & input[type="text"] {
+	appearance: none !important;
+	display: inline-block !important;
+	margin: 0 !important;
+	background: none !important;
+	border: none !important;
+	box-shadow: none !important;
+	font: inherit !important;
+	font-size: 100% !important;
+	outline: none !important;
+  }
+
+  & .selected ~ input {
+	opacity: 0.3;
+  }
+}

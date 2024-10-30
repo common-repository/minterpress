@@ -1,0 +1,21 @@
+{% extends 'layouts/dialog.twig' %}
+
+{% block dialogContent %}
+<div class="tzmp-px-12 tzmp-pb-5">
+    {% include 'partials/h2.twig' with {
+            text: 'Are you sure you want to sign out of this wallet?',
+        } only %}
+    <p>
+        {{strings.settings_sign_out_confirm}}
+    </p>
+
+    <div class="tzmp-pt-5 tzmp-text-right">
+        <span class="tzmp-mr-3">
+            <button id="minterpress-app-disconnect-wallet" class="button button-primary tzmp-btn-full tzmp-btn-full" type="button">
+                Sign out of wallet
+            </button>
+        </span>
+        <button class="button button-secondary tzmp-btn-outline" data-dialog="trigger" type="button">Cancel</button>
+    </div>
+</div>
+{% endblock %}

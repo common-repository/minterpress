@@ -1,0 +1,16 @@
+<form class="tzmp-col-span-2" data-minterpress-module="nft-status" data-nft-status-id="{{ nft.id }}">
+    {% include 'partials/form-label.twig' with {
+        text: 'Status',
+        for: 'displayStatus'
+    }%}
+    <select id="displayStatus" name="displayStatus">
+        <option value="unpublished">Unpublished</option>
+        <option value="displayed"
+            {% if nft.public is same as 'true' %}
+            selected
+            {% endif %}
+            >
+            Displayed
+        </option>
+    </select>
+</form>

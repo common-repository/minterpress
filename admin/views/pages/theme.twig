@@ -1,0 +1,107 @@
+{% extends 'layouts/card.twig' %}
+
+{% block cardContent %}
+  {% include 'partials/section-header.twig' with {
+        headingText: 'Customize your NFT gallery'
+    } %}
+
+  <div class="tzmp-flex tzmp-items-start tzmp-px-6 tzmp-py-9" data-minterpress-module="nft-theme">
+    <div class="tzmp-w-5/12">
+      {% include "partials/nft-card.twig" with {
+            imgSrc: image_path ~ '/gallery_example.jpg',
+            nftTitle: "NFT title displayed here"
+        } %}
+    </div>
+    <div class="tzmp-ml-8 tzmp-w-7/12">
+      {% include "partials/h2.twig" with {
+            text: strings.theme_header,
+        } %}
+      <p class="tzmp-text-sm tzmp-mb-3">
+        {{ strings.theme_intro }}
+      </p>
+      <p class="tzmp-text-sm tzmp-mb-8 tzmp-italic">
+        {{ strings.theme_note }}
+      </p>
+      <form class="tzmp-mr-6 tzmp-col-span-2">
+        <div class="tzmp-flex tzmp-justify-between">
+          {% include 'partials/form-label.twig' with {
+                text: 'Rounded corners',
+                for: 'borderRadius'
+            }%}
+          <div class="tzmp-w-3/5">
+            <input class="theme-input tzmp-w-full tzmp-appearance-none tzmp-h-3 tzmp-p-0 tzmp-border-0 tzmp-bg-none" 
+              type="range" 
+              id="borderRadius" 
+              name="borderRadius" 
+              min="0" 
+              max="25" 
+              value={{ mp_theme.borderRadius }}>
+            <div class="tzmp-flex tzmp-justify-between tzmp-w-full tzmp-relative tzmp--top-2">
+              <span>Squared</span>
+              <span>Rounded</span>
+            </div>
+          </div>
+        </div>
+        <div class="tzmp-mt-4 tzmp-flex tzmp-justify-between">
+          {% include 'partials/form-label.twig' with {
+                text: 'Outline weight',
+                for: 'borderWidth'
+            }%}
+          <div class="tzmp-w-3/5">
+            <input class="theme-input tzmp-w-full tzmp-appearance-none tzmp-h-3 tzmp-p-0 tzmp-border-0 tzmp-bg-none" 
+              type="range" 
+              id="borderWidth" 
+              name="borderWidth" 
+              min="1" 
+              max="5" 
+              value={{ mp_theme.borderWidth }}>
+            <div class="tzmp-flex tzmp-justify-between tzmp-w-full tzmp-relative tzmp--top-2">
+              <span>Light</span>
+              <span>Heavy</span>
+            </div>
+          </div>
+        </div>
+        <div class="tzmp-mt-4 tzmp-flex tzmp-items-center tzmp-justify-between">
+          {% include 'partials/form-label.twig' with {
+                text: 'Outline color',
+                for: 'borderColor'
+            }%}
+          <input class="theme-input" type="color" id="borderColor" name="borderColor" value={{ mp_theme.borderColor }}>
+        </div>
+        <div class="tzmp-mt-4 tzmp-flex tzmp-items-center tzmp-justify-between">
+          {% include 'partials/form-label.twig' with {
+            text: 'Font',
+            for: 'fontFamily'
+          }%}
+          <select class="theme-input" name="fontFamily" id="fontFamily">
+            <option value="'InterVariable'" {% if mp_theme.fontFamily == "'InterVariable'" %} selected {% endif %}>Inter</option>
+            <option value="'Roboto MonoVariable'" {% if mp_theme.fontFamily == "'Roboto'" %} selected {% endif %}>Roboto</option>
+            <option value="'Open SansVariable'" {% if mp_theme.fontFamily == "'Open SansVariable'" %} selected {% endif %}>Open Sans</option>
+            <option value="sans-serif" {% if mp_theme.fontFamily == "sans-serif" %} selected {% endif %}>Default Sans Serif</option>
+            <option value="serif" {% if mp_theme.fontFamily == "serif" %} selected {% endif %}>Default Serif</option>
+            <option value="monospace" {% if mp_theme.fontFamily == "monospace" %} selected {% endif %}>Default Monospaced</option>
+          </select>
+        </div>
+        <div class="tzmp-mt-4 tzmp-flex tzmp-items-center tzmp-justify-between">
+          {% include 'partials/form-label.twig' with {
+            text: 'Font color',
+            for: 'textColor'
+          }%}
+          <input class="theme-input" type="color" id="textColor" name="textColor" value={{ mp_theme.textColor }}>
+        </div>
+        <div class="tzmp-mt-4 tzmp-flex tzmp-items-center tzmp-justify-between">
+          {% include 'partials/form-label.twig' with {
+            text: 'Card color',
+            for: 'cardColor'
+          }%}
+          <input class="theme-input" type="color" id="cardColor" name="cardColor" value={{ mp_theme.cardColor }}>
+        </div>
+        <div class="tzmp-mt-4">
+          <button type="reset" class="button button-secondary tzmp-btn-outline">Reset</button>
+          <button type="submit" class="button button-primary tzmp-btn-full">Apply</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

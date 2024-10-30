@@ -1,0 +1,40 @@
+{% extends 'layouts/dialog.twig' %}
+
+{% set terms = function('get_terms', {
+       'taxonomy': taxonomy,
+       'hide_empty': false,
+    } )
+%}
+
+{% block dialogContent %}
+<div class="tzmp-px-6 tzmp-pb-9" data-minterpress-module="taxonomy-edit" data-taxonomy-name="{{ taxonomy }}">
+    {% include 'partials/h2.twig' with {
+            text: 'Edit ' ~ plural_label,
+        } only %}
+    <form class="tzmp-mb-4" method="POST">
+        {% include 'partials/form-label.twig' with {
+            text: 'Add a ' ~ singular_label,
+            for: 'new_term'
+        }%}
+        <div class="tzmp-flex tzmp-w-full tzmp-max-w-md">
+            <input name="new_term" type="text" class="tzmp-flex-grow tzmp-mr-4" data-edit-tax="new-term" />
+            <button class="button button-primary" data-edit-tax="submit">Add {{singular_label}}</button>
+        </div>
+    </form>
+    <div class="tzmp-border tzmp-h-48 tzmp-flex tzmp-flex-col tzmp-mt-9">
+        <div class="tzmp-font-bold tzmp-bg-wp-blue-lightened tzmp-px-4 tzmp-py-2">
+            <h3>Available {{plural_label}}</h3>
+        </div>
+        <ul class="tzmp-bg-gray-100 tzmp-h-full tzmp-overflow-y-scroll">
+        {% for term in terms %}
+            <li class="tzmp-flex tzmp-justify-between tzmp-border-b tzmp-px-4 tzmp-my-0 tzmp-py-2 tzmp-bg-white">
+                <span>{{ term.name }}</span>
+                <button class="tzmp-text-red-500 hover:tzmp-underline" data-tax-action="delete" data-term-id="{{ term.term_id }}">
+                    Remove
+                </button>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

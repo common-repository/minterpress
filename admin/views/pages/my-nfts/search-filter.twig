@@ -1,0 +1,35 @@
+<form class="tzmp-mb-4" action="/wp-admin/admin.php" method="GET">
+    {# Hidden inputs for returning to tab. #}
+    <input type="text" id="page" name="page" class="hidden" value="minterpress">
+    <input type="text" id="tab" name="tab" class="hidden" value="my-nfts">
+
+    {# User Inputs. #}
+    <label for="query" class="tzmp-sr-only">Text search</label>
+    <input type="text" id="query" name="query" placeholder="Search NFTs" value="{{ search_params.query }}" class="md:tzmp-w-1/2">
+    <button type="submit" class="button button-primary tzmp-btn-full">Search</button>
+    <div class="tzmp-flex tzmp-justify-between tzmp-flex-col md:tzmp-flex-row">
+        <div class="tzmp-mt-10">
+            <label for="displayStatus" class="tzmp-font-bold">
+                Viewing: <span class="tzmp-sr-only tzmp-font-bold">(NFT Status)</span>
+            </label>
+
+            <select id="displayStatus" name="displayStatus">
+                <option value="">All NFTs</option>
+                <option value="unpublished" {% if search_params.status is same as 'unpublished' %} selected {% endif %}>Unpublished</option>
+                <option value="displayed" {% if search_params.status is same as 'displayed' %} selected {% endif %}>Displayed</option>
+            </select>
+            <button type="submit" class="button tzmp-btnoutline">Filter</button>
+        </div>
+        <div class="tzmp-mt-10">
+            <label for="sort" class="tzmp-font-bold">
+                Sort by:
+            </label>
+
+            <select id="displayStatus" name="sort">
+                <option value="">Recently created</option>
+                <option value="alphabetical" {% if search_params.sort is same as 'alphabetical' %} selected {% endif %}>Alphabetical</option>
+            </select>
+            <button type="submit" class="button tzmp-btn-outline">Sort</button>
+        </div>
+    </div>
+</form>

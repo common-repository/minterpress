@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nft-card {
+  background-color: var(--nft-card-card-color, theme("colors.white"));
+  border-width: var(--nft-card-border-width, theme("borderWidth.DEFAULT"));
+  border-color: var(--nft-card-border-color, theme("colors.black"));
+  border-radius: var(--nft-card-radius, theme("borderRadius.DEFAULT"));
+  border-style: solid;
+  color: var(--nft-card-text-color, theme("colors.black"));
+  font-family: var(--nft-card-font-family, theme("fontFamily.sans"));
+  grid-template-rows: 1fr 50px;
+}
+
+.nft-card img {
+  border-bottom: var(--nft-card-border-width) solid var(--nft-card-border-color);
+}
+
+.entry-content .nft-card p {
+  color: var(--nft-card-text-color);
+  font-family: var(--nft-card-font-family);
+  margin: 0;
+}
+
+.entry-content .nft-card figcaption {
+  margin-top: 0;
+}

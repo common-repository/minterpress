@@ -1,0 +1,5 @@
+{% for id, notice in notices %}
+    <div class="notice notice-warning is-dismissible hidden" id="minterpress-app-notice-{{ id }}">
+        <p>{{ notice }}</p>
+    </div>
+{% endfor %}

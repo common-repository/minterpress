@@ -1,0 +1,13 @@
+{% extends 'layouts/card.twig' %}
+
+{% block cardContent %}
+
+{% include 'partials/section-header.twig' with { 
+    headingText: 'NFT drafts'
+} %}
+
+<div class="tzmp-container tzmp-px-6 tzmp-py-9">
+    {% include 'pages/minting/drafts-table.twig' %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% set draftListItems = wp_nft_drafts %}
+
+<div class="tzmp-w-full">
+    <div class="tzmp-font-bold tzmp-bg-wp-blue-lightened tzmp-px-4 tzmp-py-2 tzmp-grid tzmp-grid-cols-8 tzmp-gap-x-8" aria-hidden="true">
+        <div class="tzmp-col-span-1">Image</div>
+        <div class="tzmp-col-span-4">Title</div>
+        <div class="tzmp-col-span-2">Date Saved</div>
+        <div class="tzmp-col-span-1">Actions</div>
+    </div>
+
+    <ul>
+        {% for item in draftListItems %}
+            <li class="tzmp-border-b tzmp-border-l tzmp-border-r tzmp-border-gray-200 tzmp-mb-0">
+                <dl class="hover:tzmp-bg-gray-50 tzmp-grid tzmp-grid-cols-8 tzmp-gap-x-8 tzmp-py-4 tzmp-px-4 tzmp-transition-colors tzmp-duration-100">
+                    <dt class="tzmp-sr-only tzmp-col-span-0">Image:</dt>
+                    <dd class="tzmp-flex tzmp-items-center tzmp-h-full tzmp-col-span-1 tzmp-aspect-w-1 tzmp-aspect-h-1">
+                        <img src="{{ item.wpImageUrl }}" alt="" class="tzmp-border-0 tzmp-object-cover tzmp-w-full" />
+                    </dd>
+                    <dt class="tzmp-sr-only tzmp-col-span-0">Title:</dt>
+                    <dd class="tzmp-flex tzmp-items-center tzmp-h-full tzmp-col-span-4">
+                        {{ item.name }}
+                    </dd>
+                    <dt class="tzmp-sr-only tzmp-col-span-0">Date saved:</dt>
+                    <dd class="tzmp-flex tzmp-items-center tzmp-h-full tzmp-col-span-2">
+                        {{ item.date }}
+                    </dd>
+                    <dt class="tzmp-sr-only tzmp-col-span-0">Actions:</dt>
+                    <dd class="tzmp-flex tzmp-flex-col tzmp-justify-center tzmp-h-full tzmp-col-span-1">
+                        <a href="/wp-admin/admin.php?page=minterpress&tab=minting&id={{ item.id }}" class="hover:tzmp-underline tzmp-block tzmp-mb-2">Edit</a>
+                        <button data-minterpress-module="delete-entity" data-entity-id="{{ item.id }}" class="tzmp-cursor-pointer hover:tzmp-underline tzmp-block tzmp-mb-2 tzmp-text-left">Delete</button>
+                    </dd>
+                </dl>
+            </li>
+        {% endfor %}
+    </ul>   
+</div>

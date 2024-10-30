@@ -1,0 +1,19 @@
+{% import 'macros.twig' as macros %}
+
+<ul>
+    {% for index, nft in nfts %}
+        <li class="tzmp-flex tzmp-border tzmp-justify-between">
+        
+            <ul>
+                <li>Title: {{nft.name}}</li>
+                <li>Description: {{ nft.mintDescription }}</li>
+                <li>Number of copies: {{ nft.mintQuantity }}</li>
+                <li>Tags: {{ nft.mintTags }}</li>
+                <li>OpHash: {{nft.opHash }}</li>
+                <li>ImageHash: {{ nft.imageHash }}</li>
+                <li>Creator: {{ nft.creator }}</li>
+            </ul>
+            <img src="{{ nft.wpImageUrl|default(macros.gateway(nft.imageHash)) }}" alt="{{ nft.name }}" class="tzmp-w-1/4"/>
+        </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,56 @@
+{% extends 'layouts/dialog.twig' %}
+
+{% block dialogContent %}
+<div class="tzmp-px-12">
+    {% include 'partials/h2.twig' with {
+            text: 'Confirm NFT information',
+        } only %}
+</div>
+<div class="tzmp-grid tzmp-grid-cols-8 tzmp-gap-7 tzmp-mb-9 tzmp-px-12">
+    <div data-input-copy-type="image" class="tzmp-col-span-3">
+        {# Leave img here #}
+        <img id="mint-image-dialog-preview" src="{{ active_draft.wpImageUrl }}" data-input-copy-id="mintImage" class="tzmp-w-full tzmp-object-contain tzmp-border-0"/>
+    </div>
+    <div class="tzmp-col-span-5">
+        <dl data-input-copy-type="string" class="tzmp-mb-5">
+            <dt class="tzmp-font-bold tzmp-mb-2">
+                Title
+            </dt>
+            <dd data-input-copy-id="mintTitle">{# Leave parent element here #}</dd>
+        </dl>
+        <dl data-input-copy-type="string" class="tzmp-mb-5">
+            <dt class="tzmp-font-bold tzmp-mb-2">
+                Description
+            </dt>
+            <dd data-input-copy-id="mintDescription">{# Leave parent element here #}</dd>
+        </dl>
+        <dl data-input-copy-type="array" class="tzmp-mb-5">
+            <dt class="tzmp-font-bold tzmp-mb-2">
+                Tags
+            </dt>
+            <dd data-input-copy-id="mintTags">{# Leave parent element here #}</dd>
+        </dl>
+        <dl data-input-copy-type="string" class="tzmp-mb-5">
+            <dt class="tzmp-font-bold tzmp-mb-2">
+                Quantity
+            </dt>
+            <dd data-input-copy-id="mintQuantity">{# Leave parent element here #}</dd>
+        </dl>
+    </div>
+</div>
+<div class="tzmp-px-12 tzmp-py-5 tzmp-bg-gray-100 tzmp-grid tzmp-grid-cols-8 tzmp-gap-x-7">
+    <p class="tzmp-col-span-8 tzmp-font-bold tzmp-text-lg tzmp-mb-2">Important</p>
+    <div class="tzmp-col-span-6">
+        <ul class="tzmp-list-disc tzmp-ml-4">
+            <li><p>{{ strings.create_dialog_note_1 }}</p></li>
+            <li><p>{{ strings.create_dialog_note_2 }}</p></li>
+        </ul>
+    </div>
+    <div class="tzmp-col-span-2 tzmp-flex tzmp-flex-col">
+        <div class="tzmp-mb-4">
+            <button class="button-primary tzmp-btn-full tzmp-block tzmp-w-full" method="dialog" type="submit" data-dialog="trigger">Mint NFT</button>
+        </div>
+        <button class="button-secondary tzmp-btn-outline tzmp-w-full" type="button"  data-dialog="trigger">Cancel</button>
+    </div>
+</div>
+{% endblock %}

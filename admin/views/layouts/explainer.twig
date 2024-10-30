@@ -1,0 +1,18 @@
+<div class="tzmp-container tzmp-px-6 tzmp-py-9">
+    <h2 class="tzmp-text-2xl tzmp-mb-4 tzmp-font-openSans">
+        {% block contentHeader %}{% endblock %}
+    </h2>
+    <h3 class="tzmp-text-lg tzmp-font-openSans tzmp-pb-3">
+        {% block contentSubHeader %}{% endblock %}
+    </h3>
+    {% block preColomns %}{% endblock %}
+    <div class="tzmp-grid md:tzmp-grid-cols-2 tzmp-gap-4 tzmp-py-6">
+        <div>
+            {% block columnOne %}{% endblock %}
+        </div>
+        <div>
+            {% block columnTwo %}{% endblock %}
+        </div>
+    </div>
+    {% block postColomns %}{% endblock %}
+</div>

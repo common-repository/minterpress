@@ -1,0 +1,39 @@
+{% import 'macros.twig' as macros %}
+
+<div id="minterpress-app-overlay">
+
+    <div id="minterpress-app-loading">
+        {% include 'partials/loading.twig' %}
+    </div>
+    
+
+    <div class="tzmp-max-w-4xl hidden" id="minterpress-app-welcome">
+        <img class="tzmp-w-full tzmp-mb-5 tzmp-border-0"
+            src="{{ image_path ~ '/welcome_to_minterpress.jpg' }}"/>
+        <h1>
+            <span class="tzmp-font-mono tzmp-text-3xl"> 
+                {{ macros.default(strings, 'welcome_headline') }}
+            </span>
+        </h1>
+        <p class="tzmp-pb-6 tzmp-pt-2 tzmp-font-roboto tzmp-text-base">
+            {{ macros.default(strings, 'welcome_text_1') }}
+        </p>
+        <p class="tzmp-pb-6 tzmp-pt-2 tzmp-font-roboto tzmp-text-base">
+            {{ macros.default(strings, 'welcome_text_2') }}
+        </p>
+        <div class="tzmp-pb-6 tzmp-pt-2 tzmp-font-roboto tzmp-text-base">
+            {{ macros.default(strings, 'welcome_text_3') }}
+            {{ macros.default(strings, 'welcome_text_4') }}
+        </div>
+        <div class="tzmp-flex tzmp-items-center">
+            {% include 'partials/connect-wallet.twig' %}
+            <div class="tzmp-ml-4">
+                <a href="{{ macros.default(strings, 'welcome_faq_link') }}" 
+                    class="tzmp-text-sm tzmp-text-mp-blue-primary tzmp-font-bold">
+                    {{ macros.default(strings, 'welcome_faq_text') }}
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>

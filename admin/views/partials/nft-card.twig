@@ -1,0 +1,27 @@
+<figure class="nft-card tzmp-grid tzmp-overflow-hidden tzmp-h-full" style="--nft-card-border-color: {{ mp_theme.borderColor }};
+      --nft-card-border-width: {{ mp_theme.borderWidth }}px;
+      --nft-card-radius: {{ mp_theme.borderRadius }}px;
+      --nft-card-text-color: {{mp_theme.textColor}};
+      --nft-card-card-color: {{ mp_theme.cardColor }};
+      --nft-card-font-family: {{ mp_theme.fontFamily }};">
+  <div class="tzmp-aspect-w-1 tzmp-aspect-h-1">
+    {% if nftUrl %}
+      <a href="{{ nftUrl }}" target="_blank">
+    {% endif %}
+    <img src="{{ imgSrc }}" alt="{{ nftTitle }}" class="tzmp-border-0 tzmp-h-full tzmp-w-full tzmp-object-cover" />
+    {% if nftUrl %}
+      </a>
+    {% endif %}
+  </div>
+  <figcaption class="tzmp-flex tzmp-items-center card-footer">
+    <p class="tzmp-font-bold tzmp-px-5 tzmp-py-4">
+    {% if nftUrl %}
+      <a href="{{ nftUrl }}">
+    {% endif %}
+      {{ nftTitle}}
+    {% if nftUrl %}
+      </a>
+    {% endif %}
+    </p>
+  </figcaption>
+</figure>

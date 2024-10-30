@@ -1,0 +1,9 @@
+{# @see src/View_Settings.php #}
+<div>
+        {{ function('settings_errors') }}
+    <form method="POST" action="options.php">
+        {{ function('settings_fields', 'minterpress_pinata') }}
+        {{ function('do_settings_sections', 'minterpress_pinata') }}
+        {{ function('submit_button', submitText, 'primary tzmp-btn-full') }}
+    </form>
+</div>

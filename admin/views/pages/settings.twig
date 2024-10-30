@@ -1,0 +1,29 @@
+{% extends 'layouts/card.twig' %}
+
+{% block cardContent %}
+    {% include 'partials/section-header.twig' with {
+            headingText: 'Settings'
+        } %}
+<section data-label="settings" class="tzmp-px-6 tzmp-py-9 tzmp-max-w-3xl">
+    {% include 'partials/h2.twig' with {
+        text: 'Wallet information'
+    }%}
+    <p class="tzmp-text-sm">{{ strings.setting_text_1 }}</p>
+    <dl class="tzmp-grid tzmp-grid-cols-2 tzmp-gap-4 tzmp-my-4 tzmp-w-60">
+        <dt class="tzmp-font-bold">Wallet address:</dt>
+        <dd>{{ tz_address }}</dd>
+    </dl>
+    <div class="tzmp-mb-16">
+        {{ include('partials/disconnect-wallet.twig') }}
+    </div>
+    {% include 'partials/h2.twig' with {
+        text: 'API key'
+    }%}
+    <p class="tzmp-text-sm tzmp-mb-5">{{ strings.setting_text_2 }}</p>
+    <p class="tzmp-text-sm tzmp-mb-3">{{ strings.setting_text_3 }}</p>
+    <p class="tzmp-text-sm tzmp-mb-5">{{ strings.setting_text_4 }}</p>
+    {% include('pages/settings/pinata.twig') with { 
+        submitText: 'Update keys'
+    } %}
+</section>
+{% endblock %}

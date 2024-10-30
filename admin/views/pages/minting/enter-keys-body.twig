@@ -1,0 +1,25 @@
+{% import 'macros.twig' as macros %}
+
+{% extends 'layouts/explainer.twig' %}
+
+{% block contentHeader %}
+Minting Setup - Step 1 of 2
+{{ strings.onboarding_step_1_header }}
+{% endblock %}
+
+{% block contentSubHeader %}
+{{ strings.onboarding_step_1_subheader }}
+{% endblock %}
+
+{% block preColomns %}
+<p class="tzmp-text-sm tzmp-mb-8">
+    {{ strings.onboarding_step_1_precolumns }}
+</p>
+{% endblock %}
+   
+{% block columnOne %}
+{% include('pages/settings/pinata.twig') with { 
+    submitText: 'Submit Keys'
+} %}
+{% endblock %}
+

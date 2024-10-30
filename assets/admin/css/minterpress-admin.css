@@ -1,0 +1,63 @@
+@import "dialog-polyfill/dist/dialog-polyfill.css";
+
+@import "vendor-overrides/index.css";
+@import "fonts/index.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#wpfooter {
+  position: relative;
+}
+
+.tzmp a:not("nav-tab") {
+  text-decoration: underline;
+}
+
+.nft-card {
+  background-color: var(--nft-card-card-color, theme("colors.white"));
+  border-width: var(--nft-card-border-width, theme("borderWidth.DEFAULT"));
+  border-color: var(--nft-card-border-color, theme("colors.black"));
+  border-radius: var(--nft-card-radius, theme("borderRadius.DEFAULT"));
+  border-style: solid;
+  color: var(--nft-card-text-color, theme("colors.black"));
+  font-family: var(--nft-card-font-family, theme("fontFamily.sans"));
+  grid-template-rows: 1fr 50px;
+}
+
+.nft-card img {
+  border-bottom: var(--nft-card-border-width) solid var(--nft-card-border-color);
+}
+
+.tzmp-btn-full {
+  background-color: #0F62FF !important;
+  border-color: #0F62FF !important;
+}
+
+.tzmp-btn-outline {
+  color: #0F62FF !important;
+  border-color: #0F62FF !important;
+}
+
+input[type="range"]::range-track {
+  @apply tzmp-appearance-none tzmp-bg-no-repeat tzmp-rounded-sm;
+
+  height: 2px;
+  background-image: linear-gradient(
+    90deg,
+    theme('colors.mp.blue.primary') 0%,
+    theme('colors.mp.blue.primary') var(--rangeProgress),
+    theme('colors.gray.300') var(--rangeProgress),
+    theme('colors.gray.300') 100%
+  );
+}
+
+input[type="range"]::range-thumb {
+  @apply tzmp-appearance-none tzmp-border-0 tzmp-w-3 tzmp-h-3 tzmp-rounded-full tzmp-bg-mp-blue-primary tzmp-relative tzmp--top-1;
+}
+
+input[type="color"],
+input[type="color"]::-webkit-color-swatch-wrapper {
+  @apply tzmp-appearance-none tzmp-bg-none tzmp-cursor-pointer tzmp-p-0;
+}

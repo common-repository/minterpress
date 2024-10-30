@@ -1,0 +1,63 @@
+{% import 'macros.twig' as macros %}
+
+<ul>
+  {% for nft in nfts %}
+    {% set categories = function('get_the_terms', nft.id, 'minterpress_category') %}
+    <li class="tzmp-grid tzmp-grid-cols-1 xl:tzmp-grid-cols-12 tzmp-gap-5 tzmp-border tzmp-border-gray-600 tzmp-rounded-md tzmp-p-7 {{ not loop.last ? 'tzmp-mb-8' }}">
+      {% include 'pages/my-nfts/status.twig' with { nft: nft} %}
+      {% include 'pages/my-nfts/order.twig' with { nft: nft} %}
+      {% include 'pages/my-nfts/url.twig' with { nft: nft} %}
+      <img src="{{ nft.wpImageUrl|default(macros.gateway(nft.imageHash)) }}" alt="{{ nft.name }}" class="tzmp-block xl:tzmp-col-start-3 xl:tzmp-col-end-5 tzmp-border-gray-200 tzmp-border tzmp-col-span-2"/>
+      <dl class="xl:tzmp-col-start-5 xl:tzmp-col-end-11 tzmp-col-span-2">
+        <div class="tzmp-flex tzmp-justify-between tzmp-items-center">
+          <div>
+            <dt class="tzmp-font-bold">Title</dt>
+            <dd class="tzmp-font-bold tzmp-text-lg">{{nft.name}}</dd>
+          </div>
+          {# TODO: Create this variable. #}
+          {% if nft.has_price %}
+            <div class="tzmp-text-right">
+              <dt class="tzmp-font-bold">Price</dt>
+              <dd class="tzmp-font-light tzmp-text-lg tzmp-flex">
+                {{ macros.svg('tez-minimal', 'tzmp-mr-1') }}
+                {# TODO: MAke this an actual variable. #}
+                12345
+              </dd>
+            </div>
+          {% endif %}
+        </div>
+        <div class="xl:tzmp-w-4/5 tzmp-mt-5">
+        <p class="tzmp-text-xs tzmp-italic tzmp-mb-2">To copy a value, hover over it and click.</p>
+          <div class="tzmp-grid tzmp-grid-cols-2 tzmp-gap-1">
+            <dt class="tzmp-font-bold tzmp-text-xs tzmp-whitespace-nowrap">Asset hash</dt>
+            {{ macros.truncateHash(nft.imageHash, 'dd', 'tzmp-bg-white group-hover:tzmp-shadow') }}
+            <dt class="tzmp-font-bold tzmp-text-xs tzmp-whitespace-nowrap">OP hash</dt>
+            {{ macros.truncateHash(nft.opHash, 'dd', 'tzmp-bg-white group-hover:tzmp-shadow') }}
+            <dt class="tzmp-font-bold tzmp-text-xs tzmp-whitespace-nowrap">Creator</dt>
+            {{ macros.truncateHash(nft.creator, 'dd', 'tzmp-bg-white group-hover:tzmp-shadow') }}
+            <dt class="tzmp-font-bold tzmp-text-xs tzmp-whitespace-nowrap">Number of copies</dt>
+            <dd>{{ nft.mintQuantity }}</dd>
+          </div>
+        </div>
+      </dl>
+      <dl class="xl:tzmp-col-start-11 xl:tzmp-col-end-13 tzmp-flex tzmp-flex-col tzmp-justify-between tzmp-pt-2 xl:tzmp-pt-0 xl:tzmp-pl-2 tzmp-border-t xl:tzmp-border-t-0 xl:tzmp-border-l tzmp-border-black">
+        <form data-minterpress-module="nft-category" data-nft-status-id="{{ nft.id }}">
+          {% include 'partials/category-select.twig' with {
+            label: 'Display category',
+            current_category: categories[0].name,
+          }%}
+        </form>
+        <div class="tzmp-mt-2 xl:tzmp-mt-0">
+          <dt class="tzmp-font-bold tzmp-text-xs  tzmp-whitespace-nowrap">Tags</dt>
+          <dd>{{ nft.mintTags }}</dd>
+        </div>
+      </dl>
+      {% if nft.mintDescription %}
+      <dl class="tzmp-mt-3 xl:tzmp-col-start-3 xl:tzmp-col-end-10 tzmp-col-span-2">
+          <dt class="tzmp-font-bold">Description</dt>
+          <dd>{{ nft.mintDescription }}</dd>
+      </dl>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

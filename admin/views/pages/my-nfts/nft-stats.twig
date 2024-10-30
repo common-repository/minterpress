@@ -1,0 +1,22 @@
+<ul>
+    <li>
+        <dl class="tzmp-flex tzmp-justify-between tzmp-pb-4 tzmp-border-b">
+            <dt class="tzmp-font-bold tzmp-text-base">NFTs owned on contract</dt>
+            <dd>{{ nft_stats.on_contract }}</dd>
+        </dl>
+        <ul>
+            <li class="tzmp-mt-4">
+                <dl class="tzmp-flex tzmp-justify-between tzmp-pb-4 tzmp-border-b tzmp-pl-4">
+                    <dt>NFTs with displayed status</dt>
+                    <dd>{{ nft_stats.displayed }} </dd>
+                </dl>
+            </li>
+        </ul>
+    </li>
+    <li class="tzmp-mt-4">
+        <dl class="tzmp-flex tzmp-justify-between">
+            <dt class="tzmp-font-bold tzmp-text-base">NFTs created in MP</dt>
+            <dd>{{ nft_stats.created }}</dd>
+        </dl>
+    </li>
+</ul>

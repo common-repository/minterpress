@@ -1,0 +1,18 @@
+{% import 'macros.twig' as macros %}
+
+<button 
+    id="minterpress-app-connect-to-wallet" 
+    class="tzmp-bg-mp-blue-primary 
+        tzmp-text-white 
+        tzmp-text-sm 
+        tzmp-py-2 
+        tzmp-px-6 
+        tzmp-rounded-sm 
+        tzmp-font-roboto 
+        tzmp-font-medium 
+        hover:tzmp-opacity-75 
+        focus:tzmp-opacity-75" >
+    
+    {{ macros.default(strings, 'welcome_connect_wallet_text') }}
+
+</button>

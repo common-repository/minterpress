@@ -1,0 +1,28 @@
+{% import 'macros.twig' as macros %}
+
+{% extends 'layouts/explainer.twig' %}
+
+{% block contentHeader %}
+{{ strings.onboarding_step_2_header }}
+{% endblock %}
+
+{% block contentSubHeader %}
+{{ strings.onboarding_step_2_subheader }}
+{% endblock %}
+
+{% block preColomns %}
+<p class="tzmp-text-sm tzmp-mb-8">
+    {{ strings.onboarding_step_2_precolumns }}
+</p>
+{# Raw to parse OL. #}
+{{ strings.onboarding_step_2_precolumns_raw | raw }}
+{% endblock %}
+        
+{% block postColomns %}
+<h3 class="tzmp-text-lg tzmp-font-openSans tzmp-pb-3">
+    {{ strings.onboarding_step_2_postcolumns_header }}
+</h3>
+<p class="tzmp-text-sm tzmp-mb-8">
+    {{ strings.onboarding_step_2_postcolumns_content }}
+</p>
+{% endblock %}

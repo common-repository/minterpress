@@ -1,0 +1,58 @@
+{% set listItems = galleries %}
+
+{% include 'partials/h2.twig' with {
+    text: strings.gallery_list_header,
+}%}
+
+<p class="tzmp-text-sm tzmp-mb-12">
+    {{ strings.gallery_list_intro}}
+</p>
+
+<div class="tzmp-w-full">
+    <div class="tzmp-font-bold tzmp-bg-wp-blue-lightened tzmp-px-4 tzmp-py-2 tzmp-grid tzmp-grid-cols-8 tzmp-gap-x-8" aria-hidden="true">
+        <div class="tzmp-col-span-1">Id</div>
+        <div class="tzmp-col-span-3">Title</div>
+        <div class="tzmp-col-span-1">Category</div>
+        <div class="tzmp-col-span-2">Shortcode</div>
+        <div class="tzmp-col-span-1">Last updated</div>
+    </div>
+
+    <ul>
+        {% for item in listItems %}
+            <li class="tzmp-border-b tzmp-border-l tzmp-border-r tzmp-border-gray-200 tzmp-mb-0">
+                <dl class="tzmp-group hover:tzmp-bg-gray-50 tzmp-grid tzmp-grid-cols-8 tzmp-gap-x-8 tzmp-py-4 tzmp-px-4 tzmp-transition-colors tzmp-duration-100">
+                    <dt class="tzmp-sr-only tzmp-col-span-0">Id:</dt>
+                    <dd class="tzmp-flex tzmp-h-full tzmp-col-span-1">
+                        {{ item.id }}
+                    </dd>
+                    <dt class="tzmp-sr-only tzmp-col-span-0">Title:</dt>
+                    <dd class="tzmp-col-span-3">
+                        <span>{{ item.title }}</span>
+                        <div class="tzmp-opacity-0 group-hover:tzmp-opacity-100 tzmp-mt-1">
+                            <a href="admin.php?page=minterpress&tab=galleries&id={{ item.id }}" 
+                                class="tzmp-text-blue-500 hover:tzmp-underline">
+                                Edit
+                            </a> | 
+                            <button data-minterpress-module="delete-entity" data-entity-id="{{ item.id }}" 
+                                class="tzmp-text-red-500 hover:tzmp-text-red-500 hover:tzmp-underline">
+                                Trash
+                            </button>
+                        </div>
+                    </dd>
+                    <dt class="tzmp-sr-only tzmp-col-span-0">Category:</dt>
+                    <dd class="tzmp-flex tzmp-h-full tzmp-col-span-1">
+                        {{ item.terms('minterpress_category')| first }}
+                    </dd>
+                    <dt class="tzmp-sr-only tzmp-col-span-0">Date Saved:</dt>
+                    <dd class="tzmp-flex tzmp-h-full tzmp-col-span-2">
+                        [nftgallery id={{ item.id }}]
+                    </dd>
+                    <dt class="tzmp-sr-only tzmp-col-span-0">Last Updated:</dt>
+                    <dd class="tzmp-flex tzmp-h-full tzmp-col-span-1">
+                       {{ item.modified_date }}
+                    </dd>
+                </dl>
+            </li>
+        {% endfor %}
+    </ul>   
+</div>

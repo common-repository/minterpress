@@ -1,0 +1,27 @@
+{% extends 'layouts/card.twig' %}
+
+{% block wrapperAttributes %}
+{% if active_draft %}
+    data-minterpress-module="gallery-edit" data-gallery-id={{active_draft.id}}
+{% endif %}
+{% endblock %}
+
+{% block cardContent %}
+{% if active_draft %}
+    {% include 'partials/section-header.twig' with { 
+                headingText: 'Gallery - ' ~ active_draft.title,
+                rightElement: 'pages/galleries/save-changes.twig',
+            } %}
+    <div class="tzmp-px-6 tzmp-py-9">
+        {% include 'pages/galleries/gallery-edit.twig' %}
+    </div>
+{% else %}
+    {% include 'partials/section-header.twig' with { 
+            headingText: 'My galleries',
+            rightElement: 'pages/galleries/create.twig',
+        } %}
+    <div class="tzmp-px-6 tzmp-py-9">
+        {% include 'pages/galleries/gallery-list.twig' %}
+    </div>
+{% endif %}
+{% endblock %}

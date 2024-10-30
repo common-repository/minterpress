@@ -1,0 +1,8 @@
+{% extends 'layouts/card.twig' %}
+
+{% block cardContent %}
+{% include 'partials/section-header.twig' with { 
+    headingText: 'Create your NFT'
+} %}
+{% include 'pages/minting/no-tez-body.twig' %}
+{% endblock %}

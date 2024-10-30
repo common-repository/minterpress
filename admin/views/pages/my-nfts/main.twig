@@ -1,0 +1,27 @@
+{% extends 'layouts/card.twig' %}
+
+{% block cardContent %}
+{% include 'partials/section-header.twig' with {
+        headingText: 'My NFT collection'
+    } %}
+<div class="tzmp-px-6 tzmp-py-9">
+
+    <p class="tzmp-text-sm tzmp-mb-3">{{ strings.mynft_intro }}</p>
+    <p class="tzmp-text-sm tzmp-mb-5">{{ strings.mynft_intro_list }}</p>
+
+    {% if nft_stats.created > 0 %}
+    {% include 'pages/my-nfts/search-filter.twig' %}
+        {% if wp_nfts | length > 0 %}
+        <div id="minterpress-app-nft-list-container">
+            {% include 'pages/my-nfts/nfts-list.twig' with {'nfts': wp_nfts} %}
+        </div>
+        {% else %}
+            <div class="tzmp-mt-10 tzmp-pt-10 tzmp-border-t">
+            <p>No NFTs match that search. <a href="/wp-admin/admin.php?page=minterpress" class="button-link">Start a new search.</a> </p> 
+            </div>
+        {% endif %}
+    {% else %}
+        <p>You don't have any minted NFTs. Go to the <a class="tzmp-underline" href="/wp-admin/admin.php?page=minterpress&tab=minting">Minting tab</a> to get started.</p>
+    {% endif %}
+</div>
+{% endblock %}

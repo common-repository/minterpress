@@ -1,0 +1,24 @@
+{% set categories = function('get_terms', {
+       'taxonomy': 'minterpress_category',
+       'hide_empty': false,
+    } )
+%}
+{% set current_category = active_draft.terms('minterpress_category')| first %}
+
+{% include 'partials/h2.twig' with {
+    text: 'Set up your curated gallery'
+}%}
+
+<p class="tzmp-text-sm tzmp-mb-8">
+    {{ strings.gallery_edit_intro }}
+</p>
+
+<form method="POST" action="#" data-gallery-edit="form">
+    <div class="tzmp-my-4">
+        {% include 'partials/category-select.twig' with {
+            label: 'Category',
+            current_category: current_category,
+            wrapper_classes: 'tzmp-grid-cols-2 tzmp-w-56 tzmp-content-end',
+        }%}
+    </div>
+</form>

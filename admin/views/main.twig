@@ -1,0 +1,12 @@
+{% extends 'layouts/wrap.twig' %}
+
+
+{% block body %}
+  <div class="tab-content">
+    {% for route in routes %}
+      {% if active_tab == route.slug and route.type != 'action' %}
+        {% include "pages/#{ route.slug }.twig" %}
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endblock %}

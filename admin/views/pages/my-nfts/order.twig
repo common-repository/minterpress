@@ -1,0 +1,7 @@
+<form class="tzmp-col-span-2" data-minterpress-module="nft-order" data-nft-order-id="{{ nft.id }}">
+    {% include 'partials/form-label.twig' with {
+        text: 'Order',
+        for: 'sortOrder'
+    }%}
+    <input class="tzmp-block tzmp-w-full" id="sortOrder" name="sortOrder" type="number" min="0" max="100" {% if nft.order %} value="{{ nft.order }}" {% else %} value="0" {% endif %}/>
+</form>

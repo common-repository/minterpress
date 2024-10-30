@@ -1,0 +1,16 @@
+{# needs parent element with attribute of `data-minterpress-module="dialog"` for this to trigger #}
+{% import 'macros.twig' as macros %}
+
+<dialog class="tzmp-fixed tzmp-overflow-y-hidden tzmp-top-0 tzmp-left-0 tzmp-border-0 tzmp-bg-black tzmp-bg-opacity-50 tzmp-z-50 tzmp-transform tzmp-transition-all tzmp-duration-300 tzmp-w-full tzmp-h-screen">
+    <div class="lg:tzmp-ml-16 tzmp-w-full tzmp-max-w-3xl tzmp-bg-white tzmp-top-24 tzmp-absolute tzmp-left-1/2 tzmp-transform tzmp--translate-x-1/2">
+        <nav class="tzmp-px-4 tzmp-flex tzmp-justify-end tzmp-mt-4">
+            <button type="button" data-dialog="trigger">
+                {{ macros.svg('close') }}
+                <span class="tzmp-sr-only">Close</span>
+            </button>
+        </nav>
+
+        {% block dialogContent %}
+        {% endblock %}
+    </div>
+</dialog>

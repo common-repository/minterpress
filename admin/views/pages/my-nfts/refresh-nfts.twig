@@ -1,0 +1,13 @@
+<div class="tzmp-mb-1">
+    <button class="button button-primary tzmp-btn-full" id="minterpress-app-sync-nfts">
+        {{ strings.refresh_button_text }}
+    </button>
+</div>
+{% if nft_refreshed_time %}
+    <p class="tzmp-mb-4">
+        Last updated on {% include 'partials/date.twig' with {id: 'nft-refresh-time', timestamp: nft_refreshed_time }%}
+    </p>
+{% endif %}
+<p>
+    {{ strings.refresh_text }}
+</p>

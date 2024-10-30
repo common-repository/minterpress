@@ -1,0 +1,38 @@
+{% import 'macros.twig' as macros %}
+{% set activeTab = active_tab ?: null %}
+{% set toggleClasses = 'tzmp--translate-y-4 tzmp-opacity-0 tzmp-pointer-events-none' %}
+
+<h1 class="wp-heading-inline">Minterpress</h1>
+<div class="nav-tab-wrapper tzmp-flex tzmp-justify-between tzmp-items-center tzmp-w-full"> 
+    <nav class="tzmp-flex-grow">
+        {% for route in routes %}   
+            {% if route.type == 'navigation' %}
+                <a 
+                    class="nav-tab {{ activeTab == route.slug ? 'nav-tab-active'}}" 
+                    href="?page=minterpress&tab={{ route.slug }}">
+                        <span class="tzmp-flex">
+                            {{ macros.svg(route.slug, 'tzmp-pr-1') }}
+                            {{ route.title }}
+                        </span>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </nav>
+    
+    <div class="tzmp-flex tzmp-justify-center tzmp-items-center tzmp-relative">
+        <p class="tzmp-flex tzmp-pr-4 tzmp-items-center">
+            <span class="tzmp-sr-only">Your Tez balance is:</span>
+            {{ macros.svg('tez-gradient', 'tzmp-pr-1') }}
+            <span id="minterpress-app-tez-balance"></span>
+        </p>
+        <p class="tzmp-pr-4 tzmp-border-r tzmp-border-gray-700">
+            <span class="tzmp-sr-only">Your Minter ID is:</span>
+            {{ macros.truncateHash(tz_address, 'span') }}
+        </p>
+        <a 
+            class="tzmp-ml-4 tzmp-block {{ active_tab == 'settings' ? 'tzmp-underline'}}"
+            href="?page=minterpress&tab=settings">
+            Settings
+        </a>
+    </div>
+</div>

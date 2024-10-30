@@ -1,0 +1,16 @@
+<section data-label="minting">
+{% if has_keys %}
+    <h2 class="tzmp-sr-only">Minting</h2>
+    <div id="minterpress-app-no-tez-page" class="hidden">
+      {% include 'pages/minting/no-tez.twig' %}
+    </div>
+
+    <div id="minterpress-app-minting-page" class="hidden">
+      {% include 'pages/minting/create.twig' %}
+
+      {% include 'pages/minting/drafts.twig' %}
+    </div> 
+ {% else %}
+    {% include 'pages/minting/enter-keys.twig' %}
+ {% endif %}
+</section>

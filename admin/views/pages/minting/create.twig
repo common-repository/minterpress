@@ -1,0 +1,90 @@
+{% extends 'layouts/card.twig' %}
+
+{% block cardContent %}
+    {% include 'partials/section-header.twig' with { 
+        headingText: 'Mint your NFT'
+    } %}
+
+    <div class="tzmp-container tzmp-px-6 tzmp-py-9">
+        <form class="tzmp-grid tzmp-grid-cols-2 tzmp-gap-7" data-minterpress-module="minting-form" id="minterpress-app-create-nft">
+            <input hidden id="mintOrder" name="order" type="number" value="0"/>
+            <div>
+                <div class="tzmp-relative tzmp-border tzmp-border-wp-gray-outline hover:tzmp-border-wp-blue-outline hover:tzmp-shadow-wp tzmp-rounded tzmp-aspect-w-1 tzmp-aspect-h-1 tzmp-transition-all tzmp-duration-100 tzmp-group tzmp-pointer-events-none">
+                    <div id="mint-image-preview"
+                        style="background-image: url({{ active_draft.wpImageUrl }})"
+                        class="tzmp-p-4 tzmp-bg-center tzmp-bg-no-repeat tzmp-bg-contain tzmp-inset-0 tzmp-bg-gray-100 group-hover:tzmp-bg-wp-blue-lightened tzmp-transition-all tzmp-duration-100 tzmp-w-full tzmp-h-full tzmp-pointer-events-auto tzmp-object-contain">
+                        <div class="tzmp-w-full tzmp-h-full tzmp-flex tzmp-flex-col tzmp-items-center tzmp-justify-center" id="upload-button">
+                            <span class="hidden">
+                                {% include 'partials/form-label.twig' with {
+                                    text: 'Upload',
+                                    for: 'uploadImage'
+                                }%}
+                            </span>
+                            <input type="button" class="button tzmp-btn-outline" value="Upload Image" name="uploadImage" required />
+                        </div>
+                        <input id="wpImageUrl" type="text"  name="wpImageUrl" class="hidden" value="{{ active_draft.wpImageUrl }}"/>
+                    </div>
+                </div>
+                <p class="tzmp-mt-3">{{ strings.create_file_helper_raw | raw }}</p>
+                <p class="tzmp-mt-3">{{ strings.create_file_helper_raw_2}}</p>
+            </div>
+            <div>
+                <p class="tzmp-mt-3 tzmp-mb-4">{{ strings.create_intro }}</p>
+                <div class="tzmp-mb-4">
+                    {% include 'partials/form-label.twig' with {
+                        text: 'Title',
+                        for: 'mintTitle',
+                        helperText: strings.create_title,
+                    }%}
+                    <input class="tzmp-block tzmp-w-full" id="mintTitle" name="title" type="text" value="{{ active_draft.title }}"/>
+                </div>
+                <div class="tzmp-mb-4">
+                    {% include 'partials/form-label.twig' with {
+                        text: 'Description',
+                        for: 'mintDescription',
+                        helperText: strings.create_description,
+                    }%}
+                    <textarea class="tzmp-block tzmp-w-full tzmp-p-2" id="mintDescription" name="mintDescription">{{ active_draft.mintDescription }}</textarea>
+                </div>
+                <div class="tzmp-mb-4">
+                    {% include 'partials/form-label.twig' with {
+                        text: 'Tags',
+                        for: 'mintTags',
+                        helperText: strings.create_tags,
+                    }%}
+                    <input class="tzmp-block tzmp-w-full" id="mintTags" name="mintTags" type="tags" value="{{ active_draft.mintTags }}">
+                </div>
+                <div class="tzmp-mb-4">
+                    {% include 'partials/form-label.twig' with {
+                        text: 'Publisher',
+                        for: 'mintPublisher',
+                        helperText: strings.create_publisher,
+                    }%}
+                    <input class="tzmp-block tzmp-w-full" id="mintPublisher" name="mintPublisher" type="text" value="{{ active_draft.mintPublisher ?? site.name }}">
+                </div>
+                <div class="tzmp-mb-6">
+                    {% include 'partials/form-label.twig' with {
+                        text: 'Editions',
+                        for: 'mintQuantity',
+                        helperText: strings.create_quantity,
+                    }%}
+                    <input class="tzmp-block" id="mintQuantity" name="mintQuantity" type="number" min="1" value="{{ active_draft.mintQuantity ?? 1 }}"/>
+                </div>
+                <p class="tzmp-mb-7">{{ strings.create_text}}</p>
+                <div class="tzmp-flex tzmp-justify-end">
+                    <button type="button" class="button-secondary tzmp-btn-outline" data-minting-form="draft-button">Save as draft</button>
+                    <div class="tzmp-ml-4 tzmp-block" data-minterpress-module="dialog">
+                        <div data-minterpress-module="input-copy">
+                            <button type="button" class="button-primary tzmp-btn-full" data-dialog="trigger" data-input-copy="trigger">
+                                Mint
+                            </button>
+                            
+                            {% include 'pages/minting/create-dialog.twig' %}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </form>
+    </div>
+{% endblock %}
